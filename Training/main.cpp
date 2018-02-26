@@ -50,6 +50,8 @@ int main(int argc, char** argv)
             {
                 return chapter_number;
             }
+
+            break;
         default:
             std::cout << "An unrecognized chapter has been chosen! Quitting...";
             return -1;
