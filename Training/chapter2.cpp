@@ -10,24 +10,33 @@ void displayNameInFrame( const std::string& name, int framePadding )
     const std::string space_padding( framePadding, ' ' );
     const std::string star_padding( column_number, '*' );
     const int middle_row = row_number / 2;
+    
 
-    for (unsigned int ii = 0; ii < row_number; ii++)
+    for (unsigned int current_row = 0; current_row < row_number; current_row++)
     {
-
-            if ((ii == 0) || (ii == row_number - 1))
+        int output_row_characters = 0;
+        while (output_row_characters < column_number)
+        {
+            if ((current_row == 0) || (current_row == row_number - 1))
             {
-                std::cout << star_padding ;
+                std::cout << star_padding;
+                output_row_characters += star_padding.size();
             }
-            else if (ii == middle_row)
+            else if (current_row == middle_row)
             {
-                std::cout << "*" << space_padding << greeting << space_padding << "*";
+                std::string greeting_row = "*" + space_padding + greeting + space_padding + "*";
+                std::cout << greeting_row;
+                output_row_characters += greeting_row.size();
             }
             else
             {
-                std::cout << "*" << space_padding << std::string( greeting.size(), ' ' ) << space_padding << "*";
+                std::string space_padding_row = "*" + space_padding + std::string(greeting.size(), ' ') + space_padding + "*";
+                std::cout << space_padding_row;
+                output_row_characters += space_padding_row.size();
             }
 
             std::cout << std::endl;
+        }
     }
 }
 
